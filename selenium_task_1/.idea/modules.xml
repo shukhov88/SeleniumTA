@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/SeleniumTA/selenium_task_1/selenium_task_1.iml" filepath="$USER_HOME$/SeleniumTA/selenium_task_1/selenium_task_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/task_1.iml" filepath="$PROJECT_DIR$/task_1.iml" />
     </modules>
   </component>
 </project>

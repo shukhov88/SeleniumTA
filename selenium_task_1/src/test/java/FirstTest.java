@@ -21,7 +21,7 @@ public class FirstTest {
     }
 
     @Test
-    public void firstTest () {
+    public void firstSelTest () {
         driver.get("http://www.google.com/");
         driver.findElement(By.name("q")).sendKeys("webdriver");
         driver.findElement(By.name("btnG")).click();
