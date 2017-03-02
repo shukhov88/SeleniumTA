@@ -32,7 +32,7 @@ public class Task7 {
     public void start() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
     @Test
@@ -56,25 +56,18 @@ public class Task7 {
             int subItemsQuantity = driver.findElements(By.cssSelector("[id^=doc-]")).size();
             //System.out.println(subItemsQuantity);
 
-            //Цикл который должен прокликать все вложенные пункты текущего основного пункта
-            //И здесь что то не так, помогите разобраться
-            for (int j = 1; j < subItemsQuantity + 1; j++) {
-                WebElement subMenuItem = driver.findElement(By.cssSelector("[id^=doc-]:nth-child(" + i + ")"));
-                subMenuItem.click();
+            //Цикл который должен прокликать все вложенные пункты текущего основного пункта, если они существуют
+            if (subItemsQuantity != 0) {
+                for (int j = 1; j < subItemsQuantity + 1; j++) {
+                    WebElement subMenuItem = driver.findElement(By.cssSelector("[id^=doc-]:nth-child(" + j + ")"));
+                    subMenuItem.click();
+                    Assert.assertTrue(isElementPresent(By.tagName("h1")));
+                }
+            }
 
-
-
-                /*List <WebElement> subMenuItemsList = driver.findElements(By.cssSelector("[id^=doc-]"));
-                System.out.println(subMenuItemsList.size());
-                subMenuItemsList.get(i).click();*/
-
-                //Assert.assertTrue(isElementPresent(By.tagName("h1")));
-              }
         }
 
-
     }
-
 
     @After
     public void stop() {
