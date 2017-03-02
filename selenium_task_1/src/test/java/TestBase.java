@@ -37,7 +37,6 @@ public class TestBase {
             return;
         }
         DesiredCapabilities caps = new DesiredCapabilities();
-        //caps.setCapability(FirefoxDriver.MARIONETTE, false);
         driver = new ChromeDriver(caps);
         tlDriver.set(driver);
         System.out.println(((HasCapabilities) driver).getCapabilities());

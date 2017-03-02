@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class Task8 extends TestBase {
 
@@ -14,13 +13,13 @@ public class Task8 extends TestBase {
         driver.navigate().to("http://litecart/");
 
         //Получаем список товаров на главной странице
-        List<WebElement> productsList = driver.findElements(By.cssSelector("[class^=product]"));
+        List<WebElement> productsList = driver.findElements(By.cssSelector("a.link[title*=Duck]"));
 
         //В цикле проверяем, какое количество стикеров имеет каждый товар
         for (int i = 0; i < productsList.size(); i++) {
             if (productsList.get(i).findElements(By.cssSelector("[class^=sticker]")).size() != 1) {
                 //Если количесвто стикеров не равно 1, то в консоль будет выведена инфа по продукту и том, что у него > или < 1 стикера
-                System.out.println(productsList.get(i).getText() + "has more or less than 1 sticker");
+                System.out.println(productsList.get(i).getAttribute("href") + " has more or less than 1 sticker");
             }
         }
     }
