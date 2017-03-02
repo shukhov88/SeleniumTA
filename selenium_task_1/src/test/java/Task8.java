@@ -18,9 +18,9 @@ public class Task8 extends TestBase {
 
         //В цикле проверяем, какое количество стикеров имеет каждый товар
         for (int i = 0; i < productsList.size(); i++) {
-            if (productsList.get(i).findElements(By.cssSelector("[class^=product]")).size() > 1) {
-                //Если стикеров бодет больше 1, то в консоль будет выведена инфа по продукту и и том, что у него >1 стикера
-                System.out.println(productsList.get(i).getText() + "has more than 1 sticker");
+            if (productsList.get(i).findElements(By.cssSelector("[class^=sticker]")).size() != 1) {
+                //Если количесвто стикеров не равно 1, то в консоль будет выведена инфа по продукту и том, что у него > или < 1 стикера
+                System.out.println(productsList.get(i).getText() + "has more or less than 1 sticker");
             }
         }
     }
