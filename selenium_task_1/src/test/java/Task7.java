@@ -42,13 +42,31 @@ public class Task7 {
         driver.findElement(By.name("password")).sendKeys("admin");
         driver.findElement(By.name("login")).click();
         wait.until(titleIs("My Store"));
-        List <WebElement> toClick = driver.findElements(By.className("name"));
-        for (int i = 0; i < toClick.size(); i++) {
-            System.out.print("Element #" + i + " ");
-            System.out.println(toClick.get(i).getText());
-            toClick.get(i).click();
+
+        int itemsQuantity = driver.findElements(By.cssSelector("li#app-")).size();
+
+        for (int i = 1; i < itemsQuantity + 1; i++) {
+            WebElement menuItem = driver.findElement(By.cssSelector("li#app-:nth-child(" + i + ")"));
+            menuItem.click();
             Assert.assertTrue(isElementPresent(By.tagName("h1")));
+
+            int subItemsQuantity = driver.findElements(By.cssSelector("[id^=doc-]")).size();
+
+            //System.out.println(subItemsQuantity);
+
+            for (int j = 1; j < subItemsQuantity + 1; j++) {
+                WebElement subMenuItem = driver.findElement(By.cssSelector("[id^=doc-]:nth-of-type(" + i + ")"));
+                subMenuItem.click();
+
+                /*List <WebElement> subMenuItemsList = driver.findElements(By.cssSelector("[id^=doc-]"));
+                System.out.println(subMenuItemsList.size());
+                subMenuItemsList.get(i).click();*/
+
+                //Assert.assertTrue(isElementPresent(By.tagName("h1")));
+            }
         }
+
+
     }
 
 
