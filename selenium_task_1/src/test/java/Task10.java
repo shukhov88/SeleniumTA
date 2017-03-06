@@ -10,7 +10,7 @@ public class Task10 extends TestBase {
 
     @Test
     public void productInfoComparance() {
-        driver.navigate().to("http://localhost/litecart/");
+        driver.navigate().to("http://litecart/");
 
         WebElement campaigns = driver.findElement(By.cssSelector("div#box-campaigns"));
         List<WebElement> products = campaigns.findElements(By.cssSelector("div#box-campaigns a.link"));
@@ -19,10 +19,10 @@ public class Task10 extends TestBase {
         String priceOfProd = products.get(0).findElement(By.cssSelector("s.regular-price")).getAttribute("textContent");
         String salePriceOfProd = products.get(0).findElement(By.cssSelector("strong.campaign-price")).getAttribute("textContent");
 
-        String colorOfProdPrice = products.get(0).findElement(By.cssSelector("s.regular-price")).getCssValue("color");
+        String colorOfProdPrice = colorToRGB(products.get(0).findElement(By.cssSelector("s.regular-price")).getCssValue("color"));
         String fontOfProdPrice = products.get(0).findElement(By.cssSelector("s.regular-price")).getCssValue("text-decoration");
-        String colorOfProdSalePrice = products.get(0).findElement(By.cssSelector("strong.campaign-price")).getCssValue("color");
-        String fontOfProdSalePrice = products.get(0).findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight");
+        String colorOfProdSalePrice = colorToRGB(products.get(0).findElement(By.cssSelector("strong.campaign-price")).getCssValue("color"));
+        String isTagStrong = products.get(0).findElement(By.cssSelector("strong.campaign-price")).getTagName();
         String sizeOfRegularPrice = products.get(0).findElement(By.cssSelector("s.regular-price")).getCssValue("font-size");
         String sizeOfSalePrice = products.get(0).findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-size");
 
@@ -31,27 +31,16 @@ public class Task10 extends TestBase {
         float fontSizeRegular = Float.parseFloat(temp1[0]);
         float fontSizeSale = Float.parseFloat(temp2[0]);
 
-
-        System.out.println("");
-        System.out.println(colorOfProdPrice);
-        System.out.println(fontOfProdPrice);
-        System.out.println(colorOfProdSalePrice);
-        System.out.println(fontOfProdSalePrice);
-        System.out.println(sizeOfRegularPrice);
-        System.out.println(sizeOfSalePrice);
-        System.out.println("");
-
-
-        if (!colorOfProdPrice.equals("rgba(119, 119, 119, 1)")) {
+        if (!colorOfProdPrice.equals("(119, 119, 119)")) {
             System.out.println("Main page: Color of regular price is not grey.");
         }
         if (!fontOfProdPrice.equals("line-through")) {
             System.out.println("Main page: Regular price is not crossed out.");
         }
-        if (!colorOfProdSalePrice.equals("rgba(204, 0, 0, 1)")) {
+        if (!colorOfProdSalePrice.equals("(204, 0, 0)")) {
             System.out.println("Main page: Color of sale price is not red.");
         }
-        if (!fontOfProdSalePrice.equals("bold")) {
+        if (!isTagStrong.equals("strong")) {
             System.out.println("Main page: Sale price is not bold.");
         }
         if (fontSizeRegular > fontSizeSale) {
@@ -74,11 +63,11 @@ public class Task10 extends TestBase {
             System.out.println("The sale price of product on main page is not equal to sale price on product page.");
         }
 
-        String colorInsideProdPrice = driver.findElement(By.cssSelector("s.regular-price")).getCssValue("color");
+        String colorInsideProdPrice = colorToRGB(driver.findElement(By.cssSelector("s.regular-price")).getCssValue("color"));
         String fontInsideProdPrice = driver.findElement(By.cssSelector("s.regular-price")).getCssValue("text-decoration");
-        String colorInsideProdPriceSale = driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("color");
-        String fontInsideProdPriceSale = driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-weight");
+        String colorInsideProdPriceSale = colorToRGB(driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("color"));
         String sizeFontInsideProdPrice = driver.findElement(By.cssSelector("s.regular-price")).getCssValue("font-size");
+        String isTagStrongInsideProd = driver.findElement(By.cssSelector("strong.campaign-price")).getTagName();
         String sizeFontInsideProdPriceSale = driver.findElement(By.cssSelector("strong.campaign-price")).getCssValue("font-size");
 
         String[] temp3 = sizeFontInsideProdPrice.split("p");
@@ -86,27 +75,20 @@ public class Task10 extends TestBase {
         float fontSizeRegular2 = Float.parseFloat(temp3[0]);
         float fontSizeSale2 = Float.parseFloat(temp4[0]);
 
-        System.out.println(colorInsideProdPrice);
-        System.out.println(fontInsideProdPrice);
-        System.out.println(colorInsideProdPriceSale);
-        System.out.println(fontInsideProdPriceSale);
-        System.out.println(sizeFontInsideProdPrice);
-
-        if (!colorInsideProdPrice.equals("rgba(102, 102, 102, 1)")) {
+        if (!colorInsideProdPrice.equals("(102, 102, 102)")) {
             System.out.println("Product page: Color of regular price is not grey.");
         }
         if (!fontInsideProdPrice.equals("line-through")) {
             System.out.println("Product page: Regular price is not crossed out.");
         }
-        if (!colorInsideProdPriceSale.equals("rgba(204, 0, 0, 1)")) {
+        if (!colorInsideProdPriceSale.equals("(204, 0, 0)")) {
             System.out.println("Product page: Color of sale price is not red.");
         }
-        if (!fontInsideProdPriceSale.equals("bold")) {
+        if (!isTagStrongInsideProd.equals("strong")) {
             System.out.println("Product page: Sale price is not bold.");
         }
         if (fontSizeRegular2 > fontSizeSale2) {
             System.out.println("Product page: Size of sale price is not bigger than regular price.");
         }
-
     }
 }

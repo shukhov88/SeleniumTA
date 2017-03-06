@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
@@ -27,6 +28,14 @@ public class TestBase {
 
     boolean areElementsPresent(WebDriver driver, By locator) {
         return driver.findElements(locator).size() > 0;
+    }
+
+    public String colorToRGB(String rgba) {
+        String delimiters = "[a-z(), ]+";
+        String[] nums = rgba.split(delimiters);
+        String color = Arrays.toString(Arrays.copyOfRange(nums, 1, 4));
+        color = color.replace("[", "(").replace("]", ")");
+        return color;
     }
 
     @Before
