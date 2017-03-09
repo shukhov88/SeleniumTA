@@ -8,7 +8,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
@@ -36,6 +40,13 @@ public class TestBase {
         String color = Arrays.toString(Arrays.copyOfRange(nums, 1, 4));
         color = color.replace("[", "(").replace("]", ")");
         return color;
+    }
+
+    public String randomNum() {
+        Date today = Calendar.getInstance().getTime();
+        DateFormat df = new SimpleDateFormat("ddMMyyyyHHmmss");
+        String num = df.format(today);
+        return num;
     }
 
     @Before
