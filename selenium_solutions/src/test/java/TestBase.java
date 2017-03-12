@@ -22,13 +22,23 @@ public class TestBase {
     public WebDriver driver;
     public WebDriverWait wait;
 
-    boolean isElementPresent(WebDriver driver, By locator) {
+    public boolean isElementPresent(WebDriver driver, By locator) {
         try {
             driver.findElement(locator);
             return true;
         } catch (NoSuchElementException ex) {
             return false;
         }
+    }
+
+    public boolean isElementNotPresent(WebDriver driver, By locator) {
+        try {
+            driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+            return driver.findElements(locator).size() == 0;
+        } finally {
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        }
+
     }
 
     boolean areElementsPresent(WebDriver driver, By locator) {
