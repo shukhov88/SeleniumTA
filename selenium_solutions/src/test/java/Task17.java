@@ -10,7 +10,7 @@ public class Task17 extends TestBase {
     @Test
     public void newProductCreation() {
         driver.manage().window().maximize();
-        driver.navigate().to("http://localhost/litecart/admin/");
+        driver.navigate().to("http://litecart/admin/");
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("admin");
         driver.findElement(By.name("login")).click();
@@ -24,7 +24,7 @@ public class Task17 extends TestBase {
             List<WebElement> prodList = driver.findElements(By.cssSelector("tr.row [href*=edit]:not([title=Edit])"));
             prodList.get(i).click();
 
-            //Здесь должна быть проверка логов
+            driver.manage().logs().get("browser").forEach(l -> System.out.println(l));
 
             driver.findElement(By.cssSelector("li#app-:nth-child(2) li#doc-catalog")).click();
             driver.findElement(By.cssSelector("table.dataTable tr:nth-child(3) a:not([href*=edit])")).click();
