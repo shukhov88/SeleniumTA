@@ -3,6 +3,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.AbstractWebDriverEventListener;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -17,6 +21,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 public class TestBase {
 
@@ -105,8 +110,13 @@ public class TestBase {
             //driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             return;
         }
-        //DesiredCapabilities caps = new DesiredCapabilities();
-        driver = new EventFiringWebDriver(new ChromeDriver());
+
+        LoggingPreferences logPrefs = new LoggingPreferences();
+        logPrefs.enable(LogType.BROWSER, Level.ALL);
+        DesiredCapabilities cap = new DesiredCapabilities();
+        cap.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
+
+        driver = new EventFiringWebDriver(new ChromeDriver(cap));
         driver.register(new MyListener());
         tlDriver.set(driver);
         //System.out.println(((HasCapabilities) driver).getCapabilities());
