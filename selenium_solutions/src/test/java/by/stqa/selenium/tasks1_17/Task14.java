@@ -1,3 +1,5 @@
+package by.stqa.selenium.tasks1_17;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -5,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 import java.util.Set;
 
-public class Task14 extends TestBase {
+public class Task14 extends TestBaseOld {
 
     @Test
     public void newProductCreation() {

@@ -1,3 +1,5 @@
+package by.stqa.selenium.tasks1_17;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -6,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.io.File;
 import java.util.List;
 
-public class Task12 extends TestBase {
+public class Task12 extends TestBaseOld {
 
     @Test
     public void newProductCreation() {

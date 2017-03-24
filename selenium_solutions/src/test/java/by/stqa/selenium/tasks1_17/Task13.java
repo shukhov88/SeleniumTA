@@ -1,21 +1,21 @@
+package by.stqa.selenium.tasks1_17;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.InterfaceImplementation;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class Task13 extends TestBase {
+public class Task13 extends TestBaseOld {
 
     @Test
     public void shoppingCart() throws InterruptedException {
 
-        driver.navigate().to("http://litecart/");
+        driver.navigate().to("http://localhost/litecart/");
 
         for (int i = 0; i < 3; i++) {
             List<WebElement> products = driver.findElements(By.cssSelector("a.link[title*=Duck]"));
@@ -39,7 +39,7 @@ public class Task13 extends TestBase {
                 }
             }
 
-            driver.navigate().to("http://litecart/");
+            driver.navigate().to("http://localhost/litecart/");
 
         }
 

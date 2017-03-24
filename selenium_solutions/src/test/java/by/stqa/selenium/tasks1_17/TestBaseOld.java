@@ -1,3 +1,6 @@
+package by.stqa.selenium.tasks1_17;
+
+import by.stqa.seleniun.Task19.app.TestBaseNew;
 import com.google.common.io.Files;
 import org.junit.After;
 import org.junit.Before;
@@ -23,7 +26,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
-public class TestBase {
+public class TestBaseOld {
 
     public static ThreadLocal<EventFiringWebDriver> tlDriver = new ThreadLocal<EventFiringWebDriver>();
     public EventFiringWebDriver driver;
@@ -73,7 +76,7 @@ public class TestBase {
 
     }
 
-    boolean areElementsPresent(WebDriver driver, By locator) {
+    public boolean areElementsPresent(WebDriver driver, By locator) {
         return driver.findElements(locator).size() > 0;
     }
 
@@ -117,7 +120,7 @@ public class TestBase {
         cap.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 
         driver = new EventFiringWebDriver(new ChromeDriver(cap));
-        driver.register(new MyListener());
+        driver.register(new TestBaseNew.MyListener());
         tlDriver.set(driver);
         //System.out.println(((HasCapabilities) driver).getCapabilities());
         wait = new WebDriverWait(driver, 10);

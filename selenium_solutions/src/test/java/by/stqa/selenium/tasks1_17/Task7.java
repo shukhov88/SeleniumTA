@@ -1,3 +1,5 @@
+package by.stqa.selenium.tasks1_17;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -6,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 
-public class Task7 extends TestBase {
+public class Task7 extends TestBaseOld {
 
     @Test
     public void menuItemsTest () {

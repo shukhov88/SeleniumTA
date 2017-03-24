@@ -1,3 +1,5 @@
+package by.stqa.selenium.tasks1_17;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 
-public class FirstTest {
+public class LiteCartInitTest {
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -21,11 +23,12 @@ public class FirstTest {
     }
 
     @Test
-    public void firstSelTest () {
-        driver.get("http://www.google.com/");
-        driver.findElement(By.name("q")).sendKeys("webdriver");
-        driver.findElement(By.name("btnG")).click();
-        wait.until(titleIs("webdriver - Поиск в Google"));
+    public void loginTest () {
+        driver.get("http://litecart/admin/");
+        driver.findElement(By.name("username")).sendKeys("admin");
+        driver.findElement(By.name("password")).sendKeys("admin");
+        driver.findElement(By.name("login")).click();
+        wait.until(titleIs("My Store"));
     }
 
     @After
@@ -33,4 +36,5 @@ public class FirstTest {
         driver.quit();
         driver = null;
     }
+
 }

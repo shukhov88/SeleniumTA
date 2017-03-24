@@ -1,3 +1,5 @@
+package by.stqa.selenium.tasks1_17;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

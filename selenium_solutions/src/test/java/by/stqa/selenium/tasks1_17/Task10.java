@@ -1,3 +1,5 @@
+package by.stqa.selenium.tasks1_17;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -6,7 +8,7 @@ import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
-public class Task10 extends TestBase {
+public class Task10 extends TestBaseOld {
 
     @Test
     public void productInfoComparance() {
