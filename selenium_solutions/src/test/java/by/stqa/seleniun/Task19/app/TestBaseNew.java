@@ -4,18 +4,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 
-public class TestBaseNew extends Application {
+public class TestBaseNew {
 
-    public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
+    protected Application application = new Application();
 
     @Before
     public void start() {
-        init();
+        application.init();
     }
 
     @After
     public void quit() {
-        stop();
+        application.stop();
     }
 
 }

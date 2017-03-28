@@ -120,7 +120,7 @@ public class TestBaseOld {
         cap.setCapability(CapabilityType.LOGGING_PREFS, logPrefs);
 
         driver = new EventFiringWebDriver(new ChromeDriver(cap));
-        driver.register(new TestBaseNew.MyListener());
+        driver.register(new TestBaseOld.MyListener());
         tlDriver.set(driver);
         //System.out.println(((HasCapabilities) driver).getCapabilities());
         wait = new WebDriverWait(driver, 10);

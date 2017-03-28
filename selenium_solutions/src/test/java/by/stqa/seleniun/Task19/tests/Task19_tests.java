@@ -8,9 +8,9 @@ public class Task19_tests extends TestBaseNew {
     @Test
     public void shoppingCart() throws InterruptedException {
 
-        cartPageHelper.prodPageHelper.mainPageHelper.goToMainPage();
-        cartPageHelper.prodPageHelper.addProductsToCart(3);
-        cartPageHelper.openCart();
-        cartPageHelper.deleteAllProdsFromCart();
+        application.getMainPage().goToMainPage();
+        application.getProdPage().addProductsToCart(3);
+        application.getCartPage().openCart();
+        application.getCartPage().deleteAllProdsFromCart();
     }
 }
